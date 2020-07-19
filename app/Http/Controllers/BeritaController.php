@@ -14,7 +14,9 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        //
+        $data = Berita::all();
+
+        return view('pages.admin.berita.index', compact('data'));
     }
 
     /**
@@ -24,7 +26,7 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.berita.create');
     }
 
     /**
@@ -35,7 +37,10 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        Berita::create($data);
+        return redirect()->route('berita.index');
     }
 
     /**
@@ -55,9 +60,11 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function edit(Berita $berita)
+    public function edit($id)
     {
-        //
+        $berita = Berita::findOrFail($id);
+
+        return view('pages.admin.berita.edit', compact('berita'));
     }
 
     /**
@@ -67,9 +74,15 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Berita $berita)
+    public function update($id)
     {
-        //
+        $data = request()->all();
+
+        $berita = Berita::findOrFail($id);
+
+        $berita->update($data);
+
+        return redirect()->route('berita.index');
     }
 
     /**
@@ -78,8 +91,10 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Berita $berita)
+    public function destroy($id)
     {
-        //
+        $berita = Berita::findOrFail($id);
+        $berita->delete();
+        return redirect()->route('berita.index');
     }
 }
