@@ -21,4 +21,7 @@ Route::prefix('admin')->group(function(){
     Route::get('index', 'DashboardController@index')->name('dashboard');
 
     Route::resource('berita', 'BeritaController');
+    Route::resource('kuesioner', 'KuesionerController');
+    Route::resource('bidang', 'BidangController');
+    Route::resource('jenis_pelayanan', 'JenisPelayananController');
 });

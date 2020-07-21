@@ -14,7 +14,9 @@ class KuesionerController extends Controller
      */
     public function index()
     {
-        //
+        $data = Kuesioner::all();
+
+        return view('pages.admin.kuesioner.index', compact('data'));
     }
 
     /**
@@ -24,7 +26,7 @@ class KuesionerController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.kuesioner.create');
     }
 
     /**
@@ -33,9 +35,12 @@ class KuesionerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $data = request()->all();
+
+        Kuesioner::create($data);
+        return redirect()->route('kuesioner.index');
     }
 
     /**
@@ -55,9 +60,11 @@ class KuesionerController extends Controller
      * @param  \App\Kuesioner  $kuesioner
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kuesioner $kuesioner)
+    public function edit($id)
     {
-        //
+        $kuesioner = Kuesioner::findOrFail($id);
+
+        return view('pages.admin.kuesioner.edit', compact('kuesioner'));
     }
 
     /**
@@ -67,9 +74,15 @@ class KuesionerController extends Controller
      * @param  \App\Kuesioner  $kuesioner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kuesioner $kuesioner)
+    public function update($id)
     {
-        //
+        $data = request()->all();
+
+        $kuesioner = Kuesioner::findOrFail($id);
+
+        $kuesioner->update($data);
+
+        return redirect()->route('kuesioner.index');
     }
 
     /**
@@ -78,8 +91,10 @@ class KuesionerController extends Controller
      * @param  \App\Kuesioner  $kuesioner
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kuesioner $kuesioner)
+    public function destroy($id)
     {
-        //
+        $kuesioner = Kuesioner::findOrFail($id);
+        $kuesioner->delete();
+        return redirect()->route('kuesioner.index');
     }
 }

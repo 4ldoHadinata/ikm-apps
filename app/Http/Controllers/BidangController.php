@@ -14,7 +14,9 @@ class BidangController extends Controller
      */
     public function index()
     {
-        //
+        $data = Bidang::all();
+
+        return view('pages.admin.bidang.index', compact('data'));
     }
 
     /**
@@ -24,7 +26,7 @@ class BidangController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.bidang.create');
     }
 
     /**
@@ -33,9 +35,12 @@ class BidangController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $data = request()->all();
+
+        Bidang::create($data);
+        return redirect()->route('bidang.index');
     }
 
     /**
@@ -55,9 +60,11 @@ class BidangController extends Controller
      * @param  \App\Bidang  $bidang
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bidang $bidang)
+    public function edit($id)
     {
-        //
+        $bidang = Bidang::findOrFail($id);
+
+        return view('pages.admin.bidang.edit', compact('bidang'));
     }
 
     /**
@@ -67,9 +74,15 @@ class BidangController extends Controller
      * @param  \App\Bidang  $bidang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bidang $bidang)
+    public function update($id)
     {
-        //
+        $data = request()->all();
+
+        $bidang = Bidang::findOrFail($id);
+
+        $bidang->update($data);
+
+        return redirect()->route('bidang.index');
     }
 
     /**
@@ -78,8 +91,10 @@ class BidangController extends Controller
      * @param  \App\Bidang  $bidang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bidang $bidang)
+    public function destroy($id)
     {
-        //
+        $bidang = Bidang::findOrFail($id);
+        $bidang->delete();
+        return redirect()->route('bidang.index');
     }
 }

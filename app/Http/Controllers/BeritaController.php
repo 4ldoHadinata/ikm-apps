@@ -35,9 +35,9 @@ class BeritaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        $data = $request->all();
+        $data = request()->all();
 
         Berita::create($data);
         return redirect()->route('berita.index');
