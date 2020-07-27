@@ -17,6 +17,7 @@
                         <tr>
                             <th>Pelayanan</th>
                             <th>Nilai Akhir</th>
+                            <th>Hasil</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,6 +25,7 @@
                             <tr>
                                 <td>{{ $hasil->nama_pelayanan }}</td>
                                 <td>{{ $hasil->nilai_akhir }}</td>
+                                <td>{{ $hasil->hasil }}</td>
                             </tr>
                         @empty
                             <tr>

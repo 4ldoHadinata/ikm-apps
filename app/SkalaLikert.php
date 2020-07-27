@@ -14,4 +14,9 @@ class SkalaLikert extends Model
     {
         return $this->belongsTo(JenisPelayanan::class, 'id_pelayanan', 'id');
     }
+
+    public function kuesioner()
+    {
+        return $this->belongsTo(Kuesioner::class, 'id_soal', 'id');
+    }
 }

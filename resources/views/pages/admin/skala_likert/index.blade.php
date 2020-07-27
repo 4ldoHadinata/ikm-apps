@@ -18,6 +18,7 @@
                             <th>ID</th>
                             <th>Pelayanan</th>
                             <th>Nilai</th>
+                            <th>Soal</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,10 +27,11 @@
                                 <td>{{ $skala_likert->id }}</td>
                                 <td>{{ $skala_likert->pelayanan->nama_pelayanan }}</td>
                                 <td>{{ $skala_likert->nilai }}</td>
+                                <td>{{ $skala_likert->kuesioner->soal }}</td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="3" class="text-center">
+                                <td colspan="4" class="text-center">
                                     Data Kosong
                                 </td>
                             </tr>
