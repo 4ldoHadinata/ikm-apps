@@ -8,7 +8,7 @@ class SkalaLikert extends Model
 {
     protected $table = 'skala_likert';
 
-    protected $fillable = ['id_pelayanan', 'nilai'];
+    protected $fillable = ['id_pelayanan', 'nilai', 'id_soal'];
 
     public function pelayanan()
     {

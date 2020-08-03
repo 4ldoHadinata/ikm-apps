@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'InputController@index')->name('home');
+Route::post('input', 'InputController@store')->name('input');
 
 Route::prefix('admin')->group(function(){
     Route::get('index', 'DashboardController@index')->name('dashboard');
