@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Kuesioner;
 use App\SkalaLikert;
+use App\JenisPelayanan;
 use Illuminate\Http\Request;
 
 class InputController extends Controller
@@ -11,8 +12,9 @@ class InputController extends Controller
     public function index()
     {
         $data = Kuesioner::all();
+        $jenis_pelayanan = JenisPelayanan::all();
 
-        return view('pages.index', compact('data'));
+        return view('pages.index', compact('data', 'jenis_pelayanan'));
     }
 
     public function store()
@@ -20,6 +22,6 @@ class InputController extends Controller
         $data = request()->all();
 
         SkalaLikert::create($data);
-        return redirect()->route('home');
+        return back();
     }
 }

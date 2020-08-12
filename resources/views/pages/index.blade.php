@@ -19,7 +19,9 @@
 <div class="container-fluid">
 
     <!-- Content Row -->
+    @foreach ($jenis_pelayanan as $pelayanan)
     <div class="row">
+        <h1>{{ $pelayanan->nama_pelayanan }}</h1>
         <div class="table-responsive">
             <table class="table" width="100%" cellspacing="0">
                 <thead class="thead-green">
@@ -38,9 +40,9 @@
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td class="align-left">{{ $kuesioner->soal }}</td>
-                            <form action="{{ route('input') }}" method="POST" id="input{{ $no }}">
+                            <form action="{{ route('input') }}" method="POST" id="input{{ $no }}{{ $pelayanan->id }}">
                                 @csrf
-                                <input type="hidden" name="id_pelayanan" value="2">
+                                <input type="hidden" name="id_pelayanan" value="{{ $pelayanan->id }}">
                                 <input type="hidden" name="id_soal" value="{{ $kuesioner->id }}">
                                 <td>
                                     <input type="radio" name="nilai" value="4">
@@ -66,8 +68,9 @@
                 </tbody>
             </table>
         </div>
-        <button type="submit" id="btnSubmit" class="btn btn-primary mx-3" onclick="submitAll();">Submit</button>
     </div>
+    @endforeach
+    <button type="submit" id="btnSubmit" class="btn btn-primary mx-3" onclick="submitAll();">Submit</button>
 
 </div>
 @endsection
@@ -88,7 +91,6 @@
                         console.log(data);
                         // for closing popup
                         location.reload();
-                        window.close();
                     },
                     error: function(jqXHR, text, error) {
                         // Displaying if there are any errors
