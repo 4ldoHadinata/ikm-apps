@@ -35,7 +35,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $no = 1; ?>
                     @forelse ($data as $kuesioner)
                         <tr>
                             <td>{{ $no++ }}</td>
@@ -43,6 +42,7 @@
                             <form action="{{ route('input') }}" method="POST" id="input{{ $no }}{{ $pelayanan->id }}">
                                 @csrf
                                 <input type="hidden" name="id_pelayanan" value="{{ $pelayanan->id }}">
+                                <input type="hidden" name="id_responden" value="{{ $id }}">
                                 <input type="hidden" name="id_soal" value="{{ $kuesioner->id }}">
                                 <td>
                                     <input type="radio" name="nilai" value="4">
@@ -91,6 +91,7 @@
                         console.log(data);
                         // for closing popup
                         location.reload();
+                        window.location = '/';
                     },
                     error: function(jqXHR, text, error) {
                         // Displaying if there are any errors

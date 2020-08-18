@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'InputController@index')->name('home');
+Route::get('/', 'RespondenController@index')->name('welcome');
+Route::post('store', 'RespondenController@store')->name('respond');
+Route::get('input/{id}/review', 'InputController@index')->name('home');
 Route::post('input', 'InputController@store')->name('input');
 
 Route::prefix('admin')->group(function(){
