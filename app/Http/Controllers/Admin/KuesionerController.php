@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Berita;
+use App\Http\Controllers\Controller;
+use App\Kuesioner;
 use Illuminate\Http\Request;
 
-class BeritaController extends Controller
+class KuesionerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,9 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $data = Berita::all();
+        $data = Kuesioner::all();
 
-        return view('pages.admin.berita.index', compact('data'));
+        return view('pages.admin.kuesioner.index', compact('data'));
     }
 
     /**
@@ -26,7 +27,7 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.berita.create');
+        return view('pages.admin.kuesioner.create');
     }
 
     /**
@@ -39,17 +40,17 @@ class BeritaController extends Controller
     {
         $data = request()->all();
 
-        Berita::create($data);
-        return redirect()->route('berita.index');
+        Kuesioner::create($data);
+        return redirect()->route('kuesioner.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Berita  $berita
+     * @param  \App\Kuesioner  $kuesioner
      * @return \Illuminate\Http\Response
      */
-    public function show(Berita $berita)
+    public function show(Kuesioner $kuesioner)
     {
         //
     }
@@ -57,44 +58,44 @@ class BeritaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Berita  $berita
+     * @param  \App\Kuesioner  $kuesioner
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $berita = Berita::findOrFail($id);
+        $kuesioner = Kuesioner::findOrFail($id);
 
-        return view('pages.admin.berita.edit', compact('berita'));
+        return view('pages.admin.kuesioner.edit', compact('kuesioner'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Berita  $berita
+     * @param  \App\Kuesioner  $kuesioner
      * @return \Illuminate\Http\Response
      */
     public function update($id)
     {
         $data = request()->all();
 
-        $berita = Berita::findOrFail($id);
+        $kuesioner = Kuesioner::findOrFail($id);
 
-        $berita->update($data);
+        $kuesioner->update($data);
 
-        return redirect()->route('berita.index');
+        return redirect()->route('kuesioner.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Berita  $berita
+     * @param  \App\Kuesioner  $kuesioner
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $berita = Berita::findOrFail($id);
-        $berita->delete();
-        return redirect()->route('berita.index');
+        $kuesioner = Kuesioner::findOrFail($id);
+        $kuesioner->delete();
+        return redirect()->route('kuesioner.index');
     }
 }

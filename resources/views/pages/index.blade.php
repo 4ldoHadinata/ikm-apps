@@ -2,130 +2,77 @@
 
 @push('style')
     <style>
-        .thead-green {
-            background: #00C974;
-            color: #FFFFFF;
-        }
-        body {
-            background: #00C974;
-        }
-        table {
-            text-align: center;
-        }
-        .align-left {
-            text-align: left;
+        .bg-green {
+            background-color: #00C974;
         }
     </style>
 @endpush
 
 @section('content')
-<div class="container-fluid pt-4 pb-4">
+<div class="container-fluid bg-green pt-4 pb-4">
 
     <!-- Content Row -->
-    @foreach ($jenis_pelayanan as $pelayanan)
-        <div class="card mb-4">
-            <div class="card-body">
-                    <h2>{{ $pelayanan->nama_pelayanan }}</h2>
-                    <div class="table-responsive">
-                        <table class="table" width="100%" cellspacing="0">
-                            <thead class="thead-green">
-                                <tr>
-                                    <th>No</th>
-                                    <th class="align-left">Pernyataan</th>
-                                    <th>Sangat Baik</th>
-                                    <th>Baik</th>
-                                    <th>Kurang</th>
-                                    <th>Sangat Kurang</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $no = 1 ?>
-                                @forelse ($data as $kuesioner)
-                                    <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td class="align-left">{{ $kuesioner->soal }}</td>
-                                        <form action="{{ route('input') }}" method="POST" id="input{{ $no }}{{ $pelayanan->id }}">
-                                            @csrf
-                                            <input type="hidden" name="id_pelayanan" value="{{ $pelayanan->id }}">
-                                            <input type="hidden" name="id_responden" value="{{ $id }}">
-                                            <input type="hidden" name="id_soal" value="{{ $kuesioner->id }}">
-                                            <td>
-                                                <input type="radio" name="nilai" value="4">
-                                            </td>
-                                            <td>
-                                                <input type="radio" name="nilai" value="3">
-                                            </td>
-                                            <td>
-                                                <input type="radio" name="nilai" value="2">
-                                            </td>
-                                            <td>
-                                                <input type="radio" name="nilai" value="1">
-                                            </td>
-                                        </form>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="4" class="text-center">
-                                            Data Kosong
-                                        </td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
+    <h1 class="text-center text-white">IKM Apps</h1>
+    <h5 class="text-center text-white mb-4">Selamat datang di halaman IKM Apps, silahkan mengisi data-data Anda terlebih dahulu kemudian melanjutkan ke halaman selanjutnya untuk mengisi review terhadap layanan-layanan kami.</h5>
+    <div class="card">
+        <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-            </div>
+            @endif
+            <form action="{{ route('store_responden') }}" method="post">
+                @csrf
+                <section class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" class="form-control" name="nama" placeholder="Nama" value="{{ old('nama') }}">
+                </section>
+                <section class="form-group">
+                    <label for="nik">NIK</label>
+                    <input type="text" class="form-control" name="nik" placeholder="NIK" value="{{ old('nik') }}">
+                </section>
+                <section class="form-group">
+                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                    <select name="jenis_kelamin" class="form-control">
+                        <option value="laki-laki">Laki-Laki</option>
+                        <option value="perempuan">Perempuan</option>
+                    </select>
+                </section>
+                <section class="form-group">
+                    <label for="usia">Usia</label>
+                    <input type="number" class="form-control" name="usia" placeholder="Usia" value="{{ old('usia') }}">
+                </section>
+                <section class="form-group">
+                    <label for="pendidikan">Pendidikan</label>
+                    <select name="pendidikan" class="form-control">
+                        <option value="SD">SD</option>
+                        <option value="SMP">SMP</option>
+                        <option value="SMA">SMA</option>
+                        <option value="S1">S1</option>
+                        <option value="S2">S2</option>
+                        <option value="S3">S3</option>
+                    </select>
+                </section>
+                <section class="form-group">
+                    <label for="pekerjaan">Pekerjaan</label>
+                    <select name="pekerjaan" class="form-control">
+                        <option value="PNS">PNS</option>
+                        <option value="TNI">TNI</option>
+                        <option value="POLRI">POLRI</option>
+                        <option value="SWASTA">SWASTA</option>
+                        <option value="WIRAUSAHA">WIRAUSAHA</option>
+                    </select>
+                </section>
+                <button type="submit" class="btn btn-primary btn-block">
+                    Lanjut
+                </button>
+            </form>
         </div>
-    @endforeach
-    <button type="submit" id="btnSubmit" class="btn btn-primary btn-block" onclick="submitAll();">Submit</button>
+    </div>
 
 </div>
 @endsection
-
-@push('scripts')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        function validate(form){
-            // get form id
-            var formID = form.id;
-            var formDetails = $('#'+formID);
-                $.ajax({
-                    type: "POST",
-                    url: '/input',
-                    data: formDetails.serialize(),
-                    success: function(data) {
-                        // log result
-                        console.log(data);
-                        // for closing popup
-                        location.reload();
-                        window.location = '/';
-                    },
-                    error: function(jqXHR, text, error) {
-                        // Displaying if there are any errors
-                        console.log(error);
-                    }
-                })
-        }
-
-        function submitAll() {
-            for (let i=0, n=document.forms.length; i<n; i++) {
-                validate(document.forms[i]);
-            }
-        }
-        // $(document).ready(function() {
-        //     $('.inputForm').submit(function() {
-        //         alert('success');
-        //         return true;
-        //     });
-        //     $('#btnSubmit').click(function() {
-        //         $('.inputForm').trigger('submit');
-        //     });
-            // $('#btnSubmit').on('click', function() {
-            //     event.preventDefault();
-            //     for (i=1; i<{{ $no }}; i++) {
-            //         alert('success'+i);
-            //         $('#input'+i).submit();
-            //     }
-            // });
-        // });
-    </script>
-@endpush

@@ -13,9 +13,8 @@ class InputController extends Controller
     {
         $data = Kuesioner::all();
         $jenis_pelayanan = JenisPelayanan::all();
-        $no = 1;
 
-        return view('pages.index', compact('data', 'jenis_pelayanan', 'id', 'no'));
+        return view('pages.input', compact('data', 'jenis_pelayanan', 'id'));
     }
 
     public function store()
@@ -23,6 +22,5 @@ class InputController extends Controller
         $data = request()->all();
 
         SkalaLikert::create($data);
-        return redirect()->route('welcome');
     }
 }

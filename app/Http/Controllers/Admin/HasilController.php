@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\SkalaLikert;
+use App\Http\Controllers\Controller;
+use App\Hasil;
 use Illuminate\Http\Request;
 
-class SkalaLikertController extends Controller
+class HasilController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,9 @@ class SkalaLikertController extends Controller
      */
     public function index()
     {
-        $data = SkalaLikert::all();
+        $data = Hasil::all();
 
-        return view('pages.admin.skala_likert.index', compact('data'));
+        return view('pages.admin.hasil.index', compact('data'));
     }
 
     /**
@@ -43,10 +44,10 @@ class SkalaLikertController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\SkalaLikert  $skalaLikert
+     * @param  \App\Hasil  $hasil
      * @return \Illuminate\Http\Response
      */
-    public function show(SkalaLikert $skalaLikert)
+    public function show(Hasil $hasil)
     {
         //
     }
@@ -54,10 +55,10 @@ class SkalaLikertController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SkalaLikert  $skalaLikert
+     * @param  \App\Hasil  $hasil
      * @return \Illuminate\Http\Response
      */
-    public function edit(SkalaLikert $skalaLikert)
+    public function edit(Hasil $hasil)
     {
         //
     }
@@ -66,10 +67,10 @@ class SkalaLikertController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SkalaLikert  $skalaLikert
+     * @param  \App\Hasil  $hasil
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SkalaLikert $skalaLikert)
+    public function update(Request $request, Hasil $hasil)
     {
         //
     }
@@ -77,10 +78,10 @@ class SkalaLikertController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SkalaLikert  $skalaLikert
+     * @param  \App\Hasil  $hasil
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SkalaLikert $skalaLikert)
+    public function destroy(Hasil $hasil)
     {
         //
     }

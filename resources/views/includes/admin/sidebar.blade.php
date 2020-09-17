@@ -68,6 +68,16 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
+    <!-- Nav Item - Skala Likert -->
+    <li class="nav-item{{ request()->is('admin/responden') ? ' active' : '' }}">
+      <a class="nav-link" href="{{ route('responden.index') }}">
+        <i class="fas fa-fw fa-circle"></i>
+        <span>Responden</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
     <!-- Nav Item - Hasil -->
     <li class="nav-item{{ request()->is('admin/hasil') ? ' active' : '' }}">
       <a class="nav-link" href="{{ route('hasil.index') }}">

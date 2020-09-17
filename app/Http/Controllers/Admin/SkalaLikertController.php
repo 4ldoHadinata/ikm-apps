@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Bidang;
+use App\Http\Controllers\Controller;
+use App\SkalaLikert;
 use Illuminate\Http\Request;
 
-class BidangController extends Controller
+class SkalaLikertController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,9 @@ class BidangController extends Controller
      */
     public function index()
     {
-        $data = Bidang::all();
+        $data = SkalaLikert::all();
 
-        return view('pages.admin.bidang.index', compact('data'));
+        return view('pages.admin.skala_likert.index', compact('data'));
     }
 
     /**
@@ -26,7 +27,7 @@ class BidangController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.bidang.create');
+        //
     }
 
     /**
@@ -35,21 +36,18 @@ class BidangController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        $data = request()->all();
-
-        Bidang::create($data);
-        return redirect()->route('bidang.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Bidang  $bidang
+     * @param  \App\SkalaLikert  $skalaLikert
      * @return \Illuminate\Http\Response
      */
-    public function show(Bidang $bidang)
+    public function show(SkalaLikert $skalaLikert)
     {
         //
     }
@@ -57,44 +55,34 @@ class BidangController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Bidang  $bidang
+     * @param  \App\SkalaLikert  $skalaLikert
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SkalaLikert $skalaLikert)
     {
-        $bidang = Bidang::findOrFail($id);
-
-        return view('pages.admin.bidang.edit', compact('bidang'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bidang  $bidang
+     * @param  \App\SkalaLikert  $skalaLikert
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request, SkalaLikert $skalaLikert)
     {
-        $data = request()->all();
-
-        $bidang = Bidang::findOrFail($id);
-
-        $bidang->update($data);
-
-        return redirect()->route('bidang.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Bidang  $bidang
+     * @param  \App\SkalaLikert  $skalaLikert
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SkalaLikert $skalaLikert)
     {
-        $bidang = Bidang::findOrFail($id);
-        $bidang->delete();
-        return redirect()->route('bidang.index');
+        //
     }
 }

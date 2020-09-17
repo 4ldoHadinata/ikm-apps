@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Kuesioner;
+use App\Http\Controllers\Controller;
+use App\Bidang;
 use Illuminate\Http\Request;
 
-class KuesionerController extends Controller
+class BidangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,9 @@ class KuesionerController extends Controller
      */
     public function index()
     {
-        $data = Kuesioner::all();
+        $data = Bidang::all();
 
-        return view('pages.admin.kuesioner.index', compact('data'));
+        return view('pages.admin.bidang.index', compact('data'));
     }
 
     /**
@@ -26,7 +27,7 @@ class KuesionerController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.kuesioner.create');
+        return view('pages.admin.bidang.create');
     }
 
     /**
@@ -39,17 +40,17 @@ class KuesionerController extends Controller
     {
         $data = request()->all();
 
-        Kuesioner::create($data);
-        return redirect()->route('kuesioner.index');
+        Bidang::create($data);
+        return redirect()->route('bidang.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Kuesioner  $kuesioner
+     * @param  \App\Bidang  $bidang
      * @return \Illuminate\Http\Response
      */
-    public function show(Kuesioner $kuesioner)
+    public function show(Bidang $bidang)
     {
         //
     }
@@ -57,44 +58,44 @@ class KuesionerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Kuesioner  $kuesioner
+     * @param  \App\Bidang  $bidang
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $kuesioner = Kuesioner::findOrFail($id);
+        $bidang = Bidang::findOrFail($id);
 
-        return view('pages.admin.kuesioner.edit', compact('kuesioner'));
+        return view('pages.admin.bidang.edit', compact('bidang'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Kuesioner  $kuesioner
+     * @param  \App\Bidang  $bidang
      * @return \Illuminate\Http\Response
      */
     public function update($id)
     {
         $data = request()->all();
 
-        $kuesioner = Kuesioner::findOrFail($id);
+        $bidang = Bidang::findOrFail($id);
 
-        $kuesioner->update($data);
+        $bidang->update($data);
 
-        return redirect()->route('kuesioner.index');
+        return redirect()->route('bidang.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Kuesioner  $kuesioner
+     * @param  \App\Bidang  $bidang
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $kuesioner = Kuesioner::findOrFail($id);
-        $kuesioner->delete();
-        return redirect()->route('kuesioner.index');
+        $bidang = Bidang::findOrFail($id);
+        $bidang->delete();
+        return redirect()->route('bidang.index');
     }
 }

@@ -5,7 +5,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800"> Skala Likert</h1>
+      <h1 class="h3 mb-0 text-gray-800">Responden</h1>
     </div>
 
     <!-- Content Row -->
@@ -15,25 +15,27 @@
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Pelayanan</th>
-                            <th>Nilai</th>
-                            <th>Soal</th>
-                            <th>Responden</th>
+                            <th>Nama</th>
+                            <th>NIK</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Usia</th>
+                            <th>Pendidikan</th>
+                            <th>Pekerjaan</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($data as $skala_likert)
+                        @forelse ($data as $responden)
                             <tr>
-                                <td>{{ $skala_likert->id }}</td>
-                                <td>{{ $skala_likert->pelayanan->nama_pelayanan }}</td>
-                                <td>{{ $skala_likert->nilai }}</td>
-                                <td>{{ $skala_likert->kuesioner->soal }}</td>
-                                <td>{{ $skala_likert->responden->nama }}</td>
+                                <td>{{ $responden->nama }}</td>
+                                <td>{{ $responden->nik }}</td>
+                                <td>{{ $responden->jenis_kelamin }}</td>
+                                <td>{{ $responden->usia }}</td>
+                                <td>{{ $responden->pendidikan }}</td>
+                                <td>{{ $responden->pekerjaan }}</td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4" class="text-center">
+                                <td colspan="6" class="text-center">
                                     Data Kosong
                                 </td>
                             </tr>

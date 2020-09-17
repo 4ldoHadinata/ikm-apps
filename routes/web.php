@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'RespondenController@index')->name('welcome');
-Route::post('store', 'RespondenController@store')->name('respond');
-Route::get('input/{id}/review', 'InputController@index')->name('home');
-Route::post('input', 'InputController@store')->name('input');
+Route::get('/', 'HomeController@index')->name('home');
+Route::post('store', 'HomeController@store')->name('store_responden');
+Route::get('/{id}/input', 'InputController@index')->name('input');
+Route::post('input', 'InputController@store')->name('store_input');
 
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->namespace('Admin')->group(function(){
     Route::get('index', 'DashboardController@index')->name('dashboard');
 
     Route::resource('berita', 'BeritaController');
@@ -26,4 +26,5 @@ Route::prefix('admin')->group(function(){
     Route::resource('jenis_pelayanan', 'JenisPelayananController');
     Route::get('skala_likert', 'SkalaLikertController@index')->name('skala_likert.index');
     Route::get('hasil', 'HasilController@index')->name('hasil.index');
+    Route::get('responden', 'RespondenController@index')->name('responden.index');
 });
