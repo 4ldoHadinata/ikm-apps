@@ -38,6 +38,7 @@
                 <section class="form-group">
                     <label for="jenis_kelamin">Jenis Kelamin</label>
                     <select name="jenis_kelamin" class="form-control">
+                        <option value="">Pilih Jenis Kelamin</option>
                         <option value="laki-laki">Laki-Laki</option>
                         <option value="perempuan">Perempuan</option>
                     </select>
@@ -49,6 +50,7 @@
                 <section class="form-group">
                     <label for="pendidikan">Pendidikan</label>
                     <select name="pendidikan" class="form-control">
+                        <option value="">Pilih Pendidikan Terakhir</option>
                         <option value="SD">SD</option>
                         <option value="SMP">SMP</option>
                         <option value="SMA">SMA</option>
@@ -60,6 +62,7 @@
                 <section class="form-group">
                     <label for="pekerjaan">Pekerjaan</label>
                     <select name="pekerjaan" class="form-control">
+                        <option value="">Pilih Pekerjaan</option>
                         <option value="PNS">PNS</option>
                         <option value="TNI">TNI</option>
                         <option value="POLRI">POLRI</option>

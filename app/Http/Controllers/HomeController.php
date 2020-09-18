@@ -17,7 +17,10 @@ class HomeController extends Controller
         $data = request()->validate([
             'nama' => ['required'],
             'nik' => ['required'],
-            'usia' => ['required']
+            'usia' => ['required'],
+            'jenis_kelamin' => ['required'],
+            'pendidikan' => ['required'],
+            'pekerjaan' => ['required']
         ]);
 
         Responden::create($data);
