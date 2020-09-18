@@ -22,5 +22,7 @@ class InputController extends Controller
         $data = request()->all();
 
         SkalaLikert::create($data);
+
+        return redirect()->route('home');
     }
 }
