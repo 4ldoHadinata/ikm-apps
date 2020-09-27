@@ -16,6 +16,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::post('store', 'HomeController@store')->name('store_responden');
 Route::get('/{id}/input', 'InputController@index')->name('input');
 Route::post('input', 'InputController@store')->name('store_input');
+Route::get('/thankyou', 'InputController@thankyou')->name('thankyou');
 
 Route::prefix('admin')->namespace('Admin')->group(function(){
     Route::get('index', 'DashboardController@index')->name('dashboard');
