@@ -3,11 +3,11 @@
 @push('style')
     <style>
         .thead-green {
-            background: #00C974;
+            background: #2ea3f2;
             color: #FFFFFF;
         }
         body {
-            background: #00C974;
+            background: #2ea3f2;
         }
         table {
             text-align: center;
@@ -90,7 +90,7 @@
             var formDetails = $('#'+formID);
                 $.ajax({
                     type: "POST",
-                    url: '/input',
+                    url: '/ikm-apps/input',
                     data: formDetails.serialize(),
                     success: function(data) {
                         // log result
