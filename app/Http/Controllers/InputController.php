@@ -23,4 +23,9 @@ class InputController extends Controller
 
         SkalaLikert::create($data);
     }
+
+    public function thankyou()
+    {
+        return view('pages.thankyou');
+    }
 }

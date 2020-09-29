@@ -9,6 +9,9 @@
         body {
             background: #2ea3f2;
         }
+        .bg-green {
+            background-color: #00C974;
+        }
         table {
             text-align: center;
         }
@@ -19,7 +22,7 @@
 @endpush
 
 @section('content')
-<div class="container-fluid pt-4 pb-4">
+<div class="container-fluid pt-4 pb-4 bg-green">
 
     <!-- Content Row -->
     @foreach ($jenis_pelayanan as $pelayanan)
@@ -96,7 +99,7 @@
                         // log result
                         console.log(data);
                         // for closing popup
-                        window.location = '/';
+                        window.location = '/thankyou';
                     },
                     error: function(jqXHR, text, error) {
                         // Displaying if there are any errors

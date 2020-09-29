@@ -12,8 +12,7 @@
 <div class="container-fluid bg-green pt-4 pb-4">
 
     <!-- Content Row -->
-    <h1 class="text-center text-white">IKM Apps</h1>
-    <h5 class="text-center text-white mb-4">Selamat datang di halaman IKM Apps, silahkan mengisi data-data Anda terlebih dahulu kemudian melanjutkan ke halaman selanjutnya untuk mengisi review terhadap layanan-layanan kami.</h5>
+    <h3 class="text-center text-white mb-4">Selamat datang di halaman IKM Apps, silahkan mengisi data-data Anda terlebih dahulu kemudian melanjutkan ke halaman selanjutnya untuk mengisi review terhadap layanan-layanan kami.</h3>
     <div class="card">
         <div class="card-body">
             @if ($errors->any())
@@ -57,6 +56,8 @@
                         <option value="S1">S1</option>
                         <option value="S2">S2</option>
                         <option value="S3">S3</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="Lainnya">Lainnya</option>
                     </select>
                 </section>
                 <section class="form-group">
@@ -68,6 +69,7 @@
                         <option value="POLRI">POLRI</option>
                         <option value="SWASTA">SWASTA</option>
                         <option value="WIRAUSAHA">WIRAUSAHA</option>
+                        <option value="LAINNYA">LAINNYA</option>
                     </select>
                 </section>
                 <button type="submit" class="btn btn-primary btn-block">
