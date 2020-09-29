@@ -10,7 +10,8 @@
             background: #2ea3f2;
         }
         .bg-green {
-            background-color: #00C974;
+            /*background-color: #00C974;*/
+            background-color : #2EA3F2;
         }
         table {
             text-align: center;
