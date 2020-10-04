@@ -3,7 +3,7 @@
 @push('style')
     <style>
         .bg-green {
-            background-color: #00C974;
+            background-color: #2EA3F2;
         }
         .thankyou {
             height: 90vh;

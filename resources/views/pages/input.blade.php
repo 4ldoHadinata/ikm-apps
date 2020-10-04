@@ -94,7 +94,7 @@
             var formDetails = $('#'+formID);
                 $.ajax({
                     type: "POST",
-                    url: '/ikm-apps/input',
+                    url: '/input',
                     data: formDetails.serialize(),
                     success: function(data) {
                         // log result
