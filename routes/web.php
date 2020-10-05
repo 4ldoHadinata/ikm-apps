@@ -19,7 +19,7 @@ Route::get('/{id}/input', 'InputController@index')->name('input');
 Route::post('input', 'InputController@store')->name('store_input');
 Route::get('/thankyou', 'InputController@thankyou')->name('thankyou');
 
-Route::prefix('admin')->namespace('Admin')->group(function(){
+Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function(){
     Route::get('index', 'DashboardController@index')->name('dashboard');
 
     Route::resource('berita', 'BeritaController');
@@ -30,3 +30,4 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
     Route::get('hasil', 'HasilController@index')->name('hasil.index');
     Route::get('responden', 'RespondenController@index')->name('responden.index');
 });
+Auth::routes();
