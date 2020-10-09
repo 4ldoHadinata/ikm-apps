@@ -30,4 +30,5 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
     Route::get('hasil', 'HasilController@index')->name('hasil.index');
     Route::get('responden', 'RespondenController@index')->name('responden.index');
 });
+
 Auth::routes();
