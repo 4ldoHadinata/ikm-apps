@@ -5,9 +5,9 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Berita</h1>
-      <a href="{{ route('berita.create') }}" class="btn btn-sm btn-primary shadow-sm">
-        <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Berita
+      <h1 class="h3 mb-0 text-gray-800">Admin</h1>
+      <a href="{{ route('admin.create') }}" class="btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Admin
       </a>
     </div>
 
@@ -19,22 +19,22 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Judul Berita</th>
-                            <th>Isi Berita</th>
+                            <th>Nama Admin</th>
+                            <th>Email</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($data as $berita)
+                        @forelse ($data as $admin)
                             <tr>
-                                <td>{{ $berita->id }}</td>
-                                <td>{{ $berita->judul_berita }}</td>
-                                <td>{{ $berita->isi_berita }}</td>
+                                <td>{{ $admin->id }}</td>
+                                <td>{{ $admin->name }}</td>
+                                <td>{{ $admin->email }}</td>
                                 <td>
-                                    <a href="{{ route('berita.edit', $berita->id) }}" class="btn btn-info">
+                                    <a href="{{ route('admin.edit', $admin->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
-                                    <form action="{{ route('berita.destroy', $berita->id) }}" method="post" class="d-inline">
+                                    <form action="{{ route('admin.destroy', $admin->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger">

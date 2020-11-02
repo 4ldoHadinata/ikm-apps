@@ -4,7 +4,7 @@
         <nav class="row navbar navbar-expand-lg navbar-light bg-white py-1">
             <div class="navbar-nav ml-auto">
                 <a href="#" class="navbar-brand">
-                    <img class="logo" src="https://kemuning.palembang.go.id/wp-content/uploads/2020/07/Untitled-1.png" alt="">
+                    <img class="logo" src="{{ asset('images/logo.png') }}" alt="">
                 </a>
             </div>
             <ul class="navbar-nav mr-auto">

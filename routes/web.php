@@ -22,13 +22,13 @@ Route::get('/thankyou', 'InputController@thankyou')->name('thankyou');
 Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function(){
     Route::get('index', 'DashboardController@index')->name('dashboard');
 
-    Route::resource('berita', 'BeritaController');
     Route::resource('kuesioner', 'KuesionerController');
     Route::resource('bidang', 'BidangController');
     Route::resource('jenis_pelayanan', 'JenisPelayananController');
+    Route::resource('admin', 'AdminController');
     Route::get('skala_likert', 'SkalaLikertController@index')->name('skala_likert.index');
     Route::get('hasil', 'HasilController@index')->name('hasil.index');
     Route::get('responden', 'RespondenController@index')->name('responden.index');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);

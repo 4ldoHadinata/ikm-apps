@@ -3,86 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Hasil;
+use App\{HasilPerUnsur, HasilPerPelayanan};
 use Illuminate\Http\Request;
 
 class HasilController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $data = Hasil::all();
+        $hasil_per_unsur = HasilPerUnsur::all();
+        $hasil_per_pelayanan = HasilPerPelayanan::all();
 
-        return view('pages.admin.hasil.index', compact('data'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Hasil  $hasil
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Hasil $hasil)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Hasil  $hasil
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Hasil $hasil)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Hasil  $hasil
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Hasil $hasil)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Hasil  $hasil
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Hasil $hasil)
-    {
-        //
+        return view('pages.admin.hasil.index', compact('hasil_per_unsur', 'hasil_per_pelayanan'));
     }
 }

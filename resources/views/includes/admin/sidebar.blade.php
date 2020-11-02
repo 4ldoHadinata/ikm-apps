@@ -2,6 +2,9 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <div class="sidebar-brand-icon">
+        <img src="{{ asset('images/logo.png') }}" alt="Logo Kemuning" class="logo">
+      </div>
       <div class="sidebar-brand-text mx-3">IKM Apps</div>
     </a>
 
@@ -13,16 +16,6 @@
       <a class="nav-link" href="{{ route('dashboard') }}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Berita -->
-    <li class="nav-item{{ request()->is('admin/berita') ? ' active' : '' }}">
-      <a class="nav-link" href="{{ route('berita.index') }}">
-        <i class="fas fa-fw fa-envelope"></i>
-        <span>Berita</span></a>
     </li>
 
     <!-- Divider -->
@@ -58,21 +51,21 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Skala Likert -->
-    <li class="nav-item{{ request()->is('admin/skala_likert') ? ' active' : '' }}">
-      <a class="nav-link" href="{{ route('skala_likert.index') }}">
-        <i class="fas fa-fw fa-circle"></i>
-        <span>Skala Likert</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Skala Likert -->
+    <!-- Nav Item - Responden -->
     <li class="nav-item{{ request()->is('admin/responden') ? ' active' : '' }}">
       <a class="nav-link" href="{{ route('responden.index') }}">
         <i class="fas fa-fw fa-circle"></i>
         <span>Responden</span></a>
+    </li>
+    
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Skala Likert -->
+    <li class="nav-item{{ request()->is('admin/skala_likert') ? ' active' : '' }}">
+      <a class="nav-link" href="{{ route('skala_likert.index') }}">
+        <i class="fas fa-fw fa-circle"></i>
+        <span>Skala Likert (Input)</span></a>
     </li>
 
     <!-- Divider -->
@@ -83,6 +76,13 @@
       <a class="nav-link" href="{{ route('hasil.index') }}">
         <i class="fas fa-fw fa-check-circle"></i>
         <span>Hasil</span></a>
+    </li>
+
+      <!-- Nav Item - Admin -->
+    <li class="nav-item{{ request()->is('admin/admin') ? ' active' : '' }}">
+      <a class="nav-link" href="{{ route('admin.index') }}">
+        <i class="fas fa-fw fa-circle"></i>
+        <span>Admin</span></a>
     </li>
 
     <!-- Divider -->

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Berita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\User;
 
-class BeritaController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,9 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $data = Berita::all();
+        $data = User::all();
 
-        return view('pages.admin.berita.index', compact('data'));
+        return view('pages.admin.admin.index', compact('data'));
     }
 
     /**
@@ -27,7 +28,7 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.berita.create');
+        return view('pages.admin.admin.create');
     }
 
     /**
@@ -39,18 +40,19 @@ class BeritaController extends Controller
     public function store()
     {
         $data = request()->all();
+        $data['password'] = Hash::make(request('password'));
 
-        Berita::create($data);
-        return redirect()->route('berita.index');
+        User::create($data);
+        return redirect()->route('admin.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Berita  $berita
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Berita $berita)
+    public function show($id)
     {
         //
     }
@@ -58,44 +60,50 @@ class BeritaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Berita  $berita
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $berita = Berita::findOrFail($id);
+        $admin = User::findOrFail($id);
 
-        return view('pages.admin.berita.edit', compact('berita'));
+        return view('pages.admin.admin.edit', compact('admin'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Berita  $berita
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update($id)
     {
-        $data = request()->all();
+        $data = [
+            'name' => request('name'),
+            'email' => request('email')
+        ];
+        if (request('password')) {
+            $data['password'] = Hash::make(request('password'));
+        }
 
-        $berita = Berita::findOrFail($id);
+        $admin = User::findOrFail($id);
 
-        $berita->update($data);
+        $admin->update($data);
 
-        return redirect()->route('berita.index');
+        return redirect()->route('admin.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Berita  $berita
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $berita = Berita::findOrFail($id);
-        $berita->delete();
-        return redirect()->route('berita.index');
+        $admin = User::findOrFail($id);
+        $admin->delete();
+        return redirect()->route('admin.index');
     }
 }

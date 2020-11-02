@@ -11,6 +11,8 @@
 
   <title>IKM Apps Admin - Login</title>
 
+  <link rel="icon" href="{{ asset('images/logo.png') }}">
+
   <!-- Custom fonts for this template-->
   <link href="{{ url('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -20,7 +22,7 @@
 
   <style>
     .bg-login-image {
-      background: url(https://kemuning.palembang.go.id/wp-content/uploads/2020/07/Untitled-1.png);
+      background: url('{{ asset('images/logo.png') }}');
       background-position: center;
       background-size: cover;
     }
