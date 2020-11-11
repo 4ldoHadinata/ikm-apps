@@ -16,9 +16,9 @@ class CreateSkalaLikertsTable extends Migration
         Schema::create('skala_likert', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_pelayanan');
+            $table->integer('id_responden');
+            $table->integer('id_soal');
             $table->integer('nilai');
-            $table->integer('jumlah_responden');
-            $table->integer('nilai_akhir');
             $table->timestamps();
         });
     }

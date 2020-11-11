@@ -94,13 +94,13 @@
             var formDetails = $('#'+formID);
                 $.ajax({
                     type: "POST",
-                    url: '/input',
+                    url: '/input', // tambahkan /ikm-apps sebelum /input
                     data: formDetails.serialize(),
                     success: function(data) {
                         // log result
                         console.log(data);
                         // for closing popup
-                        window.location = '/thankyou';
+                        window.location = '/thankyou'; // tambahkan /ikm-apps sebelum /thankyou
                     },
                     error: function(jqXHR, text, error) {
                         // Displaying if there are any errors

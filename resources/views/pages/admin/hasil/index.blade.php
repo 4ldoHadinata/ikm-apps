@@ -63,14 +63,14 @@
                         @forelse ($hasil_per_unsur as $hasil2)
                             <tr>
                                 <td>{{ $hasil2->nama_pelayanan }}</td>
-                                <td>{{ $hasil2->jumlah_sampel }}</td>
                                 <td>{{ $hasil2->nilai_akhir }}</td>
+                                <td>{{ $hasil2->jumlah_sampel }}</td>
                                 <td>{{ $hasil2->soal }}</td>
                                 <td>{{ $hasil2->hasil }}</td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="3" class="text-center">
+                                <td colspan="5" class="text-center">
                                     Data Kosong
                                 </td>
                             </tr>
